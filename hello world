@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Specific Element Example</title>
+    <style>
+        /* Hide everything by default when printing */
+        .no-print {
+            visibility: visible; /* Visible on screen */
+        }
+        @media print {
+            .no-print {
+                display: none !important; /* Hidden when printing */
+            }
+            .print-only {
+                visibility: visible; /* Ensure the printable area is visible */
+            }
+        }
+    </style>
+    <script>
+        function printDiv(divId) {
+            var printContents = document.getElementById(divId).outerHTML; // Use outerHTML to keep CSS
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+            // Reload the page to restore functionality, or use a better library for complex apps
+            // window.location.reload(); 
+        }
+    </script>
+</head>
+<body>
+
+    <div id="header" class="no-print">
+        <h2>My Website Header (will not print)</h2>
+        <button onclick="printDiv('printableArea')">Print Only Section Below</button>
+    </div>
+
+    <div id="printableArea" class="print-only">
+        <h1>Welcome to the Printable Area!</h1>
+        <p>This content will be the ONLY thing sent to the printer.</p>
+        <p>Styles will be preserved.</p>
+    </div>
+
+    <footer class="no-print">
+        <p>Footer content (will not print).</p>
+    </footer>
+
+</body>
+</html>
