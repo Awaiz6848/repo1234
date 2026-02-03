@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Print Specific Element Example</title>
+    <title>Print Specific Element aExample</title>
     <style>
         /* Hide everything by default when printing */
         .no-print {
